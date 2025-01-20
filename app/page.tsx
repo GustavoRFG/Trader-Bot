@@ -40,7 +40,15 @@ export default function Home() {
 async function fetchCryptoPrices(): Promise<CryptoPrices> {
   try {
     console.log("Iniciando a requisição...");
-    const response = await fetch("https://bc30-2804-1b2-11c0-2b7b-991-a208-55f8-b66a.ngrok-free.app/api/crypto");
+    const response = await fetch(
+      "https://2c24-2804-1b2-11c0-2b7b-38d5-5628-816c-8bc6.ngrok-free.app/api/crypto",
+      {
+        method: "GET",
+        headers: {
+          "ngrok-skip-browser-warning": "true", // Adiciona o cabeçalho para ignorar o aviso
+        },
+      }
+    );
     console.log("Resposta da API:", response);
 
     if (!response.ok) {
