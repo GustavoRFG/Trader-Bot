@@ -12,10 +12,17 @@ interface CryptoData {
   dogecoin: { usd: number };
 }
 
+const instance = axios.create({
+  baseURL: "https://a0e6-2804-1b2-11c0-2b7b-fd71-11f3-d0be-fd15.ngrok-free.app",
+  headers: {
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true", // Ignora o aviso do ngrok
+  },
+});
 // Função para buscar dados do trader
 export const fetchTraderData = async (): Promise<TraderData> => {
   try {
-    const response = await axios.get<TraderData>("http://localhost:3001/api/trader-data");
+    const response = await instance.get<TraderData>("/api/trader-data");
     return response.data;
   } catch (error) {
     console.error("Erro ao buscar dados de trader:", error);
@@ -26,7 +33,7 @@ export const fetchTraderData = async (): Promise<TraderData> => {
 // Função para buscar dados de preços de criptomoedas
 export const fetchCryptoData = async (): Promise<CryptoData> => {
   try {
-    const response = await axios.get<CryptoData>("http://localhost:3001/api/crypto");
+    const response = await instance.get<CryptoData>("https://a0e6-2804-1b2-11c0-2b7b-fd71-11f3-d0be-fd15.ngrok-free.app/api/crypto");
     return response.data;
   } catch (error) {
     console.error("Erro ao buscar dados de criptomoedas:", error);

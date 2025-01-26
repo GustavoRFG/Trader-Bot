@@ -27,9 +27,12 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const traderResult = await fetchTraderData();
+        console.log("TraderData recebido:", traderResult); // Log detalhado
+        alert("TraderData recebido: " + JSON.stringify(traderResult)); // Teste com alert
         setTraderData(traderResult);
 
         const cryptoResult = await fetchCryptoData();
+        console.log("CryptoData recebido:", cryptoResult); // Log detalhado
         setCryptoData(cryptoResult);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
@@ -54,18 +57,27 @@ const Dashboard = () => {
         >
           { traderData && (
             <>
-      <Card title="Trader BOT Profit" value={`$${traderData.profit}`} />
-      <Card title="Trader BOT Wallet" value={`$${traderData.wallet}`} />
-      <Card title="Number of Actions" value={traderData.actions} />
+      <Card title="Trader BOT Profit" value={`$${traderData.profit || "Nada"}`} />
+      <Card title="Trader BOT Wallet" value={`$${traderData.wallet || "Nada"}`} />
+      <Card title="Number of Actions" value={traderData.actions || "Nada"} />
       </>
     )}
-      {cryptoData && (
-        <div>
-          <Card title="Bitcoin Price" value={`$${cryptoData.bitcoin.usd}`} />
-          <Card title="Ethereum Price" value={`$${cryptoData.ethereum.usd}`} />
-          <Card title="Doge Price" value={`$${cryptoData.dogecoin.usd}`} />
-        </div>
-      )}
+{cryptoData && (
+  <div>
+    <Card
+      title="Bitcoin Price"
+      value={`$${cryptoData.bitcoin?.usd || "N/A"}`}
+    />
+    <Card
+      title="Ethereum Price"
+      value={`$${cryptoData.ethereum?.usd || "N/A"}`}
+    />
+    <Card
+      title="Doge Price"
+      value={`$${cryptoData.dogecoin?.usd || "N/A"}`}
+    />
+  </div>
+)}
       </div>
     </div>
   );
