@@ -28,7 +28,7 @@ const Dashboard = () => {
       try {
         const traderResult = await fetchTraderData();
         console.log("TraderData recebido:", traderResult); // Log detalhado
-        alert("TraderData recebido: " + JSON.stringify(traderResult)); // Teste com alert
+        // alert("TraderData recebido: " + JSON.stringify(traderResult)); // Teste com alert
         setTraderData(traderResult);
 
         const cryptoResult = await fetchCryptoData();
