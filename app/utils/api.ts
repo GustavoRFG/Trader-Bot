@@ -13,7 +13,7 @@ interface CryptoData {
 }
 
 const instance = axios.create({
-  baseURL: "https://3bbf-2804-1b2-11c0-2b7b-b464-507b-7d62-b321.ngrok-free.app",
+  baseURL: "https://71a8-2804-1b2-11c0-2b7b-b464-507b-7d62-b321.ngrok-free.app",
   headers: {
     "Content-Type": "application/json",
     "ngrok-skip-browser-warning": "true", // Ignora o aviso do ngrok
